@@ -6,11 +6,10 @@ import {RouterModule} from "@angular/router";
 import {PostsComponent} from "./components/posts/posts.component";
 import {DetailsComponent} from "./components/details/details.component";
 import {HttpClientModule} from "@angular/common/http";
-import {AppRoutingModule} from "./app-routing,module";
+import {AppRoutingModule} from "./app-routing.module";
 import {NgbAccordionModule, NgbModule} from "@ng-bootstrap/ng-bootstrap";
 import {PageNotFoundComponent} from "./components/pageNotFound/pageNotFound.component";
 import {FormsModule} from "@angular/forms";
-import {CUSTOM_ELEMENTS_SCHEMA} from "@angular/compiler";
 
 @NgModule({
   declarations: [

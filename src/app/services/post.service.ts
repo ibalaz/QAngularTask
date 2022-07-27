@@ -1,6 +1,6 @@
 import {Injectable} from "@angular/core";
 import {HttpClient, HttpParams} from "@angular/common/http";
-import {map, Observable} from "rxjs";
+import {Observable} from "rxjs";
 import {PostModel} from "../model/post.model";
 import {UserModel} from "../model/user.model";
 import {CommentsModel} from "../model/comments.model";

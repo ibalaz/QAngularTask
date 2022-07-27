@@ -7,7 +7,7 @@ describe('PostService', () => {
   const mockServices = new MockService();
 
   let httpClient: HttpClient;
-  let postService: PostService;
+  let service: PostService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -15,9 +15,9 @@ describe('PostService', () => {
         {provide: HttpClient, useValue: mockServices.getMockService('HttpClient')}
       ]
     })
-    httpClient = TestBed.get(HttpClient);
+    httpClient = TestBed.inject(HttpClient);
 
-    postService = new PostService(httpClient);
+    service = new PostService(httpClient);
   })
 
   it('should get posts', () => {
@@ -25,7 +25,7 @@ describe('PostService', () => {
     let postId = '1';
 
     // when
-    postService.getPosts(postId);
+    service.getPosts(postId);
 
     // then
     expect(httpClient.get).toHaveBeenCalled();
@@ -33,7 +33,7 @@ describe('PostService', () => {
 
   it('should get users', () => {
     // when
-    postService.getUsers();
+    service.getUsers();
 
     // then
     expect(httpClient.get).toHaveBeenCalled();
@@ -44,7 +44,7 @@ describe('PostService', () => {
     let id = '1';
 
     // when
-    postService.getComments(id);
+    service.getComments(id);
 
     // then
     expect(httpClient.get).toHaveBeenCalled();

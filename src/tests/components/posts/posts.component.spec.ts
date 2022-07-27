@@ -20,9 +20,9 @@ describe('DetailsComponent', () => {
         {provide: ActivatedRoute, useValue: mockServices.getMockService('ActivatedRoute')}
       ]
     })
-    service = TestBed.get(PostService);
-    router = TestBed.get(Router);
-    activatedRoute = TestBed.get(ActivatedRoute);
+    service = TestBed.inject(PostService);
+    router = TestBed.inject(Router);
+    activatedRoute = TestBed.inject(ActivatedRoute);
 
     component = new PostsComponent(service, activatedRoute, router);
   })

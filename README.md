@@ -9,11 +9,15 @@ Run `npm install` to pull fresh dependencies. This must be done before building 
 
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Run `npm run start` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+
+## Run test
+
+Run `npm run start` command to run tests. To run test you need to have Chrome installed on your PC.
 
 ## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Run `npm run build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
 ### Time needed to develop
 

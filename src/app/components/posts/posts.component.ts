@@ -58,7 +58,7 @@ export class PostsComponent extends BaseComponent implements OnInit {
 
   search: OperatorFunction<string, readonly string[]> = (text$: Observable<string>) =>
     text$.pipe(
-      debounceTime(200),
+      debounceTime(600),
       distinctUntilChanged(),
       map(user => user.length < 2 ? []
         : this.usernames.filter(v => v.toLowerCase().indexOf(user.toLowerCase()) > -1).slice(0, 10))

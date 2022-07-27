@@ -1,0 +1,67 @@
+
+<div class="container col-sm-6">
+  <label for="typehead-basic">Search for users post</label>
+  <input id="typehead-basic" type="text" class="form-control" [(ngModel)]="searchedUser" [ngbTypeahead]="search" (ngModelChange)="onInputChange()">
+</div>
+<hr>
+<div *ngIf="searchedUser === ''">
+  <ngb-accordion [closeOthers]="true">
+    <ngb-panel *ngFor="let post of paginatedPosts" id="post-{{post.id}}">
+      <ng-template ngbPanelHeader let-opened="opened">
+        <div class="accordion-button custom-header justify-content" [class.collapsed]="!opened">
+          <p class="m-0">{{post.username.username}} : {{post.title}}</p>
+          <button type="button" class="btn btn-sm btn-outline-primary ms-2" (click)="onDetailsButtonClick(post.id)">
+            Details
+          </button>
+          <button ngbPanelToggle class="btn btn-sm btn-outline-dark ms-2" (click)="onShortDetailClick(post.id)">Short details</button>
+        </div>
+      </ng-template>
+      <ng-template ngbPanelContent>
+        {{post.body}}
+        <hr>
+        <ngb-accordion [closeOthers]="false">
+          <ngb-panel *ngFor="let comment of comments" id="comment-{{comment.id}}}" title="{{comment.email}} : {{comment.name}}">
+            <ng-template ngbPanelContent>
+              {{comment.body}}
+            </ng-template>
+          </ngb-panel>
+        </ngb-accordion>
+      </ng-template>
+    </ngb-panel>
+  </ngb-accordion>
+  <ngb-pagination class="d-flex justify-content-center"
+                  [(page)]="page"
+                  [pageSize]="pageSize"
+                  [collectionSize]="allPosts.length"
+                  [boundaryLinks]="true"
+                  (pageChange)="onPageChange()"
+  >
+  </ngb-pagination>
+</div>
+<div *ngIf="searchedUser !== ''">
+  <ngb-accordion [closeOthers]="true">
+    <ngb-panel *ngFor="let post of mergedPostsAndUser" id="post-{{post.id}}">
+      <ng-template ngbPanelHeader let-opened="opened">
+        <div class="accordion-button custom-header justify-content" [class.collapsed]="!opened">
+          <p class="m-0">{{post.username.username}} : {{post.title}}</p>
+          <button type="button" class="btn btn-sm btn-outline-primary ms-2" (click)="onDetailsButtonClick(post.id)">
+            Details
+          </button>
+          <button ngbPanelToggle class="btn btn-sm btn-outline-dark ms-2" (click)="onShortDetailClick(post.id)">Short details</button>
+        </div>
+      </ng-template>
+      <ng-template ngbPanelContent>
+        {{post.body}}
+        <hr>
+        <ngb-accordion [closeOthers]="false">
+          <ngb-panel *ngFor="let comment of comments" id="comment-{{comment.id}}}" title="{{comment.email}} : {{comment.name}}">
+            <ng-template ngbPanelContent>
+              {{comment.body}}
+            </ng-template>
+          </ngb-panel>
+        </ngb-accordion>
+      </ng-template>
+    </ngb-panel>
+  </ngb-accordion>
+</div>
+

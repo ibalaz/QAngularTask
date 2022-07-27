@@ -1,0 +1,22 @@
+ <div class="card container col-sm-6">
+  <div class="card-body">
+    <p class="bg-info">{{post.title}}</p>
+    <p class="bg-light">{{post.body}}</p>
+    <br>
+    <ngb-accordion [closeOthers]="true">
+      <ngb-panel *ngFor="let comment of comments" id="comment-{{comment.id}}}" title="{{comment.email}} : {{comment.name}}">
+        <ng-template ngbPanelContent>
+          {{comment.body}}
+        </ng-template>
+      </ngb-panel>
+    </ngb-accordion>
+    <hr>
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-primary" (click)="onBackButtonClick()">Back</button>
+    </div>
+  </div>
+
+</div>
+
+
+
